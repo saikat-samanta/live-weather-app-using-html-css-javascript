@@ -3,6 +3,7 @@
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
+    setTimeout(getLocation, 40000);
   } else {
     document.querySelector('#date_data').textContent = "Geolocation is not supported by this browser.";
   }
@@ -47,7 +48,6 @@ class weather {
     this.minTemp = weatherDetails.main.temp_min;
     this.temp = weatherDetails.main.temp;
     this.watherStatus = weatherDetails.weather[0].main;
-    console.log(weatherDetails);
   }
 }
 
@@ -56,7 +56,6 @@ class weather {
 ////////////////* DOM data change */////////////////
 
 const domChange = async (weatherData, dateData) => {
-  console.log(await weatherData.cityName);
   document.querySelector('.city_name').textContent = `${weatherData.cityName},${weatherData.country}`;
   document.querySelector('.cur_temp').innerHTML = `${celcius(weatherData.temp)} &deg;C`;
   document.querySelector('.min_max_data').innerHTML = `<span id="min">min</span>-temp: ${celcius(weatherData.minTemp)} &deg;C<br><span id="max">max</span>-temp:
