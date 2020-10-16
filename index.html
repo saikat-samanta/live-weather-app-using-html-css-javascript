@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    <section class="card" data-tilt-glare data-tilt-max-glare="0.7">
+    <section class="card">
         <div class="weather_status">
         </div>
-        <div class="weather_data">
+        <div class="weather_data" data-tilt>
             <div class="wave"></div>
             <div class="weather_details">
                 <h1 class="city_name"></h1>
@@ -28,7 +28,7 @@
     </section>
     <script type="text/javascript" src="./js/vanilla-tilt.min.js"></script>
     <script type="text/javascript">
-        VanillaTilt.init(document.querySelector(".card"), {
+        VanillaTilt.init(document.querySelectorAll(".card, .weather_status"), {
             max: 25,
             speed: 200,
             gyroscope: true, // Boolean to enable/disable device orientation detection,
